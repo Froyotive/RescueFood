@@ -70,11 +70,10 @@
             <main class="content px-3 py-2">
                 <div class="container mt-5 card card-body">
                     <div class="container mt-4">
-                        <h2>Data Akun Mitra</h2>
+                        <h2>Verifikasi Data Akun Mitra</h2>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>No</th>
                                     <th>Nama Toko</th>
                                     <th>Kontak Toko</th>
                                     <th>Nama Pemilik</th>
@@ -87,7 +86,6 @@
                             <tbody>
                                 @foreach($mitras as $index => $mitra)
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $mitra->nama_toko }}</td>
                                     <td>{{ $mitra->no_hp_toko }}</td>
                                     <td>{{ $mitra->name }}</td>
@@ -95,7 +93,7 @@
                                     <td>{{ $mitra->alamat_toko }}</td>
                                     <td>{{ $mitra->status }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="#" class="btn btn-warning btn-sm">Cek Data</a>
                                         <form action="#" style="display:inline">
                                             @csrf
                                             @method('DELETE')

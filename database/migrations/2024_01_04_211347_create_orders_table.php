@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->integer('quantity');
             $table->decimal('total_price', 8, 2);
+            $table->enum('pembayaran', ['QRIS', 'Transfer', 'CASH']);
             $table->enum('status', ['Pesanan Sedang Dipersiapkan', 'Pesanan Siap'])
             ->default('Pesanan Sedang Dipersiapkan');
             $table->timestamps();
