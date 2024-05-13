@@ -10,6 +10,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\MitraController;
 /*  
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +30,8 @@ Route::get('/menu', [MenuController::class, 'landingPage']);
 Route::get('/promo', [PromoController::class, 'landingPage']);
 Route::get('/menu_customer', [MenuController::class, 'landingPageCustomer']); 
 Route::post('/add_to_cart', [MenuController::class, 'addToCart']); 
-Route::get('/promo_customer', [PromoController::class, 'landingPageCustomer']); 
+Route::get('/promo_customer', [PromoController::class, 'landingPageCustomer']);
+
 
 
 
@@ -105,3 +107,16 @@ Route::post('/apply-promo', [CartController::class, 'applyPromo'])->name('applyP
 Route::post('/cart/store-order', [PromoController::class, 'storeOrder'])->name('orders.create');
 Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
 Route::get('/customer/orders', [CustomerController::class, 'orders'])->name('customer.orders');
+
+Route::get('/registrasi_mitra', function (){
+    return view('customer.form');
+});
+Route::get('/mitra/create', [MitraController::class, 'create'])->name('mitra.create');
+Route::post('/mitra/store', [MitraController::class, 'store'])->name('mitra.store');
+Route::get('/verifikasi_mitra', function (){
+    return view('admin.list_mitra.verifikasi');
+});
+Route::get('/dashboard', function (){
+    return view('admin.dashboard');
+});
+Route::get('/verifikasi_mitra', [MitraController::class, 'index'])->name('verifikasi_mitra');

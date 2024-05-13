@@ -14,6 +14,7 @@
 <body>
     <div class="wrapper">
         <aside id="sidebar" class="js-sidebar">
+            <!-- Content For Sidebar -->
             <div class="h-100">
                 <div class="sidebar-logo">
                     <a href="#">Admin Dashboard</a>
@@ -28,13 +29,13 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="{{ url('verifikasi_mitra')}}" class="sidebar-link">
+                        <a href="{{ url('list_mitra')}}" class="sidebar-link">
                             <i class="fa-solid fa-comment-dollar pe-2"></i>
                             Verifikasi Mitra
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="{{url('data_customer')}}" class="sidebar-link">
+                        <a href="#" class="sidebar-link">
                             <i class="fa-solid fa-user pe-2"></i>
                             Data Akun Customer
                         </a>
@@ -43,12 +44,6 @@
                         <a href="#" class="sidebar-link">
                             <i class="fa-solid fa-comment-dollar pe-2"></i>
                             Data Akun Toko
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="fa-solid fa-comment-dollar pe-2"></i>
-                            Promo
                         </a>
                     </li>
                 </ul>
@@ -73,18 +68,44 @@
                 </div>
             </nav>
             <main class="content px-3 py-2">
-                <div class="container-fluid">
-                    <div class="mb-3">
-                        <h4>Admin Dashboard</h4>
+                <div class="container mt-5 card card-body">
+                    <div class="container mt-4">
+                        <h2>Verifikasi Data Akun Mitra</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Nama Toko</th>
+                                    <th>Kontak Toko</th>
+                                    <th>Nama Pemilik</th>
+                                    <th>Kategori Usaha</th>
+                                    <th>Alamat Toko</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($mitras as $index => $mitra)
+                                <tr>
+                                    <td>{{ $mitra->nama_toko }}</td>
+                                    <td>{{ $mitra->no_hp_toko }}</td>
+                                    <td>{{ $mitra->name }}</td>
+                                    <td>{{ $mitra->kategori }}</td>
+                                    <td>{{ $mitra->alamat_toko }}</td>
+                                    <td>{{ $mitra->status }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning btn-sm">Cek Data</a>
+                                        <form action="#" style="display:inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="row">
-                        <div class="col-12 col-md-6 d-flex">
-                            <h2>Welcome Back, {{ Auth::user()->name }}</h2>
-                        </div>
-                        <!-- Assuming you have a variable $totalEarnings available in your Blade view -->
-
-                    </div>
-                    <!-- Table Element -->
                 </div>
             </main>
             <a href="#" class="theme-toggle">

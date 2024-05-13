@@ -82,40 +82,38 @@
                 <div class="container mt-5 card card-body">
                     <div class="container mt-4">
                         <h2>Data Akun Customer</h2>
-                        <div class="mb-5 text-end ">
-                            <a href="{{ route('data_customer.create') }}" class="btn btn-success mb-3">Tambah Akun
-                                Customer</a>
-                        </div>
                         <table class="table table-bordered ">
                             <thead>
                                 <tr>
-                                    <th>No</th>
                                     <th>Nama Customer</th>
+                                    <th>No Customer</th>
+                                    <th>Tempat Lahir</th>
+                                    <th>Tanggal Lahir</th>
                                     <th>Email Customer</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data_customer as $index => $user)
-                                @if($user->role === 'customer')
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        <a href="{{ route('data_customer.edit', $user->id) }}"
-                                            class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('data_customer.destroy', $user->id) }}" method="POST"
-                                            style="display:inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus ?')">Hapus</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endif
-                                @endforeach
+                                @for($index = 0; $index < count($data_customer); $index++) @php
+                                    $user=$data_customer[$index]; @endphp @if($user->role === 'customer')
+                                    <tr>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->no_hp }}</td>
+                                        <td>{{ $user->tempat_lahir }}</td>
+                                        <td>{{ $user->tanggal_lahir }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>
+                                            <form action="{{ route('data_customer.destroy', $user->id) }}" method="POST"
+                                                style="display:inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus ?')">Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endif
+                                    @endfor
                             </tbody>
                         </table>
                     </div>
