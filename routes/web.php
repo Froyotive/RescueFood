@@ -11,6 +11,9 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\ProfileCustomerController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
+
 /*  
 |--------------------------------------------------------------------------
 | Web Routes
@@ -120,3 +123,19 @@ Route::get('/dashboard', function (){
     return view('admin.dashboard');
 });
 Route::get('/verifikasi_mitra', [MitraController::class, 'index'])->name('verifikasi_mitra');
+Route::get('/lihat_data_mitra', function (){
+    return view('admin.list_mitra.show');
+});
+Route::get('/mitra/{id}', [MitraController::class, 'show'])->name('admin.list_mitra.show');
+Route::post('/mitra/{id}/accept', [MitraController::class, 'accept'])->name('mitra.accept');
+Route::get('/profil_customer', function (){
+    return view('customer.profil');
+});
+Route::get('/artikel', function(){
+    return view('artikel.dashboard');
+});
+Route::get('/chat', function(){
+    return view('customer.chat');
+});
+
+Route::get('/profil_customer/{id}', [ProfileCustomerController::class, 'show'])->name('customer.profil');
