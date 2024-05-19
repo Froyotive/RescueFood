@@ -106,6 +106,13 @@
                         </table>
                     </div>
                 </div>
+
+                <div class="d-flex justify-content-center">
+                    <form method="POST" action="{{ route('mitra.accept', $mitras->id) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Terima Mitra</button>
+                    </form>
+                </div>
             </main>
 
             <a href="#" class="theme-toggle">

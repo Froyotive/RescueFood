@@ -44,15 +44,15 @@ class MitraController extends Controller
 
     public function show($id)
         {
-            $mitras = Mitra::findOrFail($id);
+            $mitras = Mitra::where('status', 'PENDING')->findOrFail($id);
             return view('admin.list_mitra.show', compact('mitras'));
         }
-        public function accept($id)
+    public function accept($id)
         {
             $mitra = Mitra::findOrFail($id);
     
 
-            $mitra->status = 'accepted';
+            $mitra->status = 'ACCEPT';
             $mitra->save();
     
 
@@ -64,4 +64,5 @@ class MitraController extends Controller
     
             return redirect()->back()->with('success', 'Mitra berhasil diterima dan peran pengguna diperbarui.');
         }
+        
 }
