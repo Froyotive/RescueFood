@@ -22,7 +22,7 @@
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">Navigation Sidebar</li>
                     <li class="sidebar-item">
-                        <a href="{{url('admin/dashboard')}}" class="sidebar-link">
+                        <a href="{{url('mitra/dashboard')}}" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
                             Dashboard
                         </a>
